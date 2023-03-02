@@ -115,13 +115,13 @@ export const Canvas = ({ imageUploaded }) => {
 
   useEffect(() => {
     if (imageUploaded) {
-      ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
-      const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let y = 0; y < canvas.height; y++) {
+      ctx2.drawImage(myImage, 0, 0, canvas2.width, canvas2.height);
+      const pixels = ctx2.getImageData(0, 0, canvas2.width, canvas2.height);
+      ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+      for (let y = 0; y < canvas2.height; y++) {
         let row = [];
         let rowColor = [];
-        for (let x = 0; x < canvas.width; x++) {
+        for (let x = 0; x < canvas2.width; x++) {
           const red = pixels.data[y * 4 * pixels.width + x * 4];
           const green = pixels.data[y * 4 * pixels.width + (x * 4 + 1)];
           const blue = pixels.data[y * 4 * pixels.width + (x * 4 + 2)];
@@ -138,7 +138,7 @@ export const Canvas = ({ imageUploaded }) => {
       setTimeout(() => {
         canvasRef2.current.className += " active";
         ctx2.drawImage(myImage, 0, 0, canvas2.width, canvas2.height);
-        setInterval(() => {
+        setTimeout(() => {
           cancelAnimationFrame(requestIdRef.current);
         }, 20000);
       }, 3000);
