@@ -15,13 +15,8 @@ class Particle {
     this.recalculated = false;
   }
 
-  update(mappedImage) {
-    if (!this.recalculated && mappedImage.length > 0) {
-      this.y = 0;
-      this.recalculated = true;
-      this.speed = mappedImage[this.position1][this.position2][0];
-      this.size = Math.random() * 2;
-    }
+  update() {
+    this.size += Math.random() * 0.001;
     if (this.y >= this.height) {
       this.y = 0;
       this.x = Math.random() * this.width;
@@ -34,6 +29,7 @@ class Particle {
     let movement = 2.5 - this.speed + this.velocity * 9;
     this.y += movement;
   }
+
   draw(context, colors) {
     context.beginPath();
     context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -41,11 +37,12 @@ class Particle {
 
     if (colors.length > 0) {
       context.fillStyle = colors[this.position1][this.position2][0];
-      context.globalAlpha = this.speed;
+      context.globalAlpha = this.speed * 2;
     } else {
       context.fillStyle = "rgb(255,255,255)";
-      context.globalAlpha = this.speed * 0.9;
+      context.globalAlpha = this.speed * 1.5;
     }
+
     context.fill();
     context.restore();
   }
@@ -140,7 +137,7 @@ export const Canvas = ({ imageUploaded }) => {
         ctx2.drawImage(myImage, 0, 0, canvas2.width, canvas2.height);
         setTimeout(() => {
           cancelAnimationFrame(requestIdRef.current);
-        }, 3000);
+        }, 5000);
       }, 3000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -150,7 +147,7 @@ export const Canvas = ({ imageUploaded }) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particlesArray.forEach((particle) => {
       particle.draw(ctx, colors);
-      particle.update(mappedImage);
+      particle.update();
     });
     requestIdRef.current = window.requestAnimationFrame(animate);
   }
