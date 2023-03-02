@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/picture-effect/static/css/main.4cac80c1.css",
-    "main.js": "/picture-effect/static/js/main.d49165ff.js",
+    "main.js": "/picture-effect/static/js/main.cc7536ad.js",
     "index.html": "/picture-effect/index.html",
     "main.4cac80c1.css.map": "/picture-effect/static/css/main.4cac80c1.css.map",
-    "main.d49165ff.js.map": "/picture-effect/static/js/main.d49165ff.js.map"
+    "main.cc7536ad.js.map": "/picture-effect/static/js/main.cc7536ad.js.map"
   },
   "entrypoints": [
     "static/css/main.4cac80c1.css",
-    "static/js/main.d49165ff.js"
+    "static/js/main.cc7536ad.js"
   ]
 }
